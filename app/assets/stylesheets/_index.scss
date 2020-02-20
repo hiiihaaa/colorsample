@@ -1,11 +1,62 @@
 .colorWrapper{
-  .colorTheme{
-    display: flex;
+  padding: 10px;
+  margin:auto;
+  max-width: 1150px;
+  .colorsRow{
+    display:flex
   }
-  .box{
-    margin: 1px;
-    height: 30px;
-    width:  100px;
-    background-color: rgb(155,0,0);
+
+  .header{
+    padding-bottom: 15px;
+    &__title{
+      margin: auto;
+      font-size: 40px;
+      font-weight: bold;
+      color: #333333;
+      width: 300px;
+      text-align: center;
+      border-bottom: solid 1px #333333;
+    }
+
+  }
+  .colorTheme{
+    margin-bottom: 15px;
+    &__box{
+      margin: 0.5px;
+      height: 50px;
+      width:  100px;
+      background-color: rgb(255,0,0);
+    }
+    &__discription{
+      color: #555555;
+      line-height: 30px;
+      text-align: center;
+    }
+  }
+  .colorSample{
+    .box{
+      color: #cccccc;
+      margin: 0.5px;
+      height: 20px;
+      width:  70px;
+      background-color: rgb(200,200,200);
+      &__font{
+        line-height: 20px;
+        margin: auto;
+        font-size: 10px;
+        transform:scale(0.6);
+        transform-origin: center; 
+      }
+    }
+
+  }
+  .preview{
+    margin:30px;
+    &__color{
+      margin: auto;
+      height: 220px;
+      width: 330px;
+      background-color: #ff0000;
+    }
   }
 }

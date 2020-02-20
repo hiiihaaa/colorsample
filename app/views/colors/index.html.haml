@@ -1,6 +1,19 @@
 .colorWrapper
+  .header
+    .header__title Color Sample
   .colorTheme
-    = render partial: "colorThemeBox"
+    .colorTheme__boxesWrap.colorsRow
+      -for num in 1..24 do
+        .colorTheme__box{id: "colorThemeBox#{num}", data:{index: num}}
+    .colorTheme__discription
+      テーマカラーを選んでください
+  
+
   .colorSample
+    -for sampleRow in 1..9 do
+      .colorsRow{id: "sampleRow#{sampleRow}"}
+        -for num in 1..32
+          .box{id: "colorSampleBox#{num}", data:{colorr: ''}, data:{colorg: ''}, data:{colorb:''}}
 
   .preview
+    .preview__color
