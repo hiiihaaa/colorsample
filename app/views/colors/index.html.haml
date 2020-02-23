@@ -5,15 +5,64 @@
     .colorTheme__boxesWrap.colorsRow
       -for num in 1..24 do
         .colorTheme__box{id: "colorThemeBox#{num}", data:{index: num}}
-    .colorTheme__discription
-      テーマカラーを選んでください
+    .colorTheme__discription.caption
+      ①テーマカラーを選んでください
   
 
   .colorSample
-    -for sampleRow in 1..9 do
-      .colorsRow{id: "sampleRow#{sampleRow}"}
-        -for num in 1..32
-          .box{id: "colorSampleBox#{num}", data:{colorr: ''}, data:{colorg: ''}, data:{colorb:''}}
+    .colorSample__boxes
+      -for sampleRow in 0..8 do
+        .colorsRow{id: "sampleRow#{sampleRow}"}
+          -for num in 1..28  #32から黒側を(4)ズラす
+            .box{id: "colorSampleBox#{num}", data:{color: 'eeeeee'}, data2:{opacity: 1}}
+    .colorSample__discription.caption
+      ②確認したい色を選んでください
 
-  .preview
-    .preview__color
+  .colorPreview
+    .controller__font-style
+      .pcontroller__font-style__japanese
+        .AXIS AXIS
+        .hiragino ヒラギノ角ゴ・明朝
+        .MSP MS Pゴシック・明朝
+        .MB31 見出ゴMB31
+        .MA31 見出ミンMA31
+        .meirio メイリオ
+        .rtyumin リュウミン
+      .controller__font-style__alphanumeric
+        .Arial Arial
+        .GEORGIA GEORGIA
+        .Myriad Myriad
+        .Verdana Verdana
+        .TimesNewRoman TimesNewRoman
+
+    .preview{data:{color: 'eeeeee'}}
+
+    .display_and_controller
+      .show-value
+        -# .show-value__rgb.col
+        -#   -# rgb
+        .show-value__hexadecimal.col
+          %span.show-value__hexadecimal--caption color: 
+          .show-value__hexadecimal--value #eeeeee
+          
+        .show-value__opacity.col
+          %span.show-value__opacity--caption opacity:
+          .show-value__opacity--value 1
+          
+        .show-value__fontstyle
+
+      .controller__colors
+        .controller__colors__contrast.col
+          %span mode
+          = select_tag 'mode', options_for_select({"Monotone": 1, "Twotone": 2}, 1)
+        .controller__colors__target.col
+          %span target
+          = select_tag 'color-garget', options_for_select({"Background": 1, "Font": 2}, 1)
+        .controller__colors__opacity.col
+          %span opacity
+          = select_tag 'opacity', options_for_select({"OFF": 1, "ON": 2}), id: 'opacity_switch'
+        .controller__colors__image.col
+          %span image
+          %label{for: 'input_image'}
+            select file
+            %input.vanish{type: 'file', id: 'input_image'}

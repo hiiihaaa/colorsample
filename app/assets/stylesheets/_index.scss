@@ -1,24 +1,30 @@
 .colorWrapper{
   padding: 10px;
   margin:auto;
-  max-width: 1150px;
+  max-width: 1300px;
   .colorsRow{
     display:flex
   }
+  .caption{
+    color: #888888;
+    line-height: 30px;
+    text-align: center;
+  }
 
   .header{
-    padding-bottom: 15px;
+    padding-bottom: 25px;
     &__title{
       margin: auto;
-      font-size: 40px;
-      font-weight: bold;
+      font-size: 45px;
+      font-family: GEORGIA;
       color: #333333;
       width: 300px;
       text-align: center;
       border-bottom: solid 1px #333333;
     }
-
   }
+
+
   .colorTheme{
     margin-bottom: 15px;
     &__box{
@@ -27,36 +33,86 @@
       width:  100px;
       background-color: rgb(255,0,0);
     }
-    &__discription{
-      color: #555555;
-      line-height: 30px;
-      text-align: center;
-    }
   }
+
+
   .colorSample{
     .box{
       color: #cccccc;
       margin: 0.5px;
       height: 20px;
-      width:  70px;
-      background-color: rgb(200,200,200);
+      width:100%;
+      background-color:#eeeeee;
       &__font{
+        text-align: center;
         line-height: 20px;
         margin: auto;
         font-size: 10px;
-        transform:scale(0.6);
-        transform-origin: center; 
+        transform:scale(0.8);
       }
     }
-
+    #sampleRow4{
+      #colorSampleBox13{
+        color:#999999;
+      }
+    }
   }
-  .preview{
+
+
+  .colorPreview{
     margin:30px;
-    &__color{
+    display:flex;
+    font-size:10px;
+    .controller__font-style{
+      display:flex;
+      &__japanese{
+      }
+      &__alphanumeric{
+        padding-left:10px;
+      }
+    }
+    .preview{
       margin: auto;
-      height: 220px;
-      width: 330px;
-      background-color: #ff0000;
+      height: 250px;
+      width: 350px;
+      background-color: #eeeeee;
+    }
+    .display_and_controller{
+      display:flex;
+      margin-top: 20px;
+      min-width: 300px;
+      .col{
+        margin-bottom: 5px;
+        height: 40px;
+        font-size: 20px;
+        font-family: Arial;
+      }
+      .show-value{
+        margin-right: 10px;
+        width: 200px;
+        .col{
+          display: flex;
+        }
+      }
+      .controller__colors{
+        .col{
+          font-family: GEORGIA;
+        }
+        .controller__colors__image{
+          label{
+            height: 50px;
+            width: 50px;
+            background-color: #f8f8f8;
+            border: solid 1px #999999;
+            border-radius: 4px;
+
+          }
+          .vanish{
+            display: none
+            // }
+          }
+        }
+      }
     }
   }
 }
