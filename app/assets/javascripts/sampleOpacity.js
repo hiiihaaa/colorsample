@@ -1,7 +1,9 @@
 $(document).on('turbolinks:load', function(){
-  $('#opacity_switch').on('change', function(){
+  // $('#opacity_switch').on('change', function(){
+  $('.colorPreview').on('change', '#opacity_switch', function(){    
     var opa_switch = document.getElementById('opacity_switch').value;
-    var targetColor = $('.preview').data('color')
+    var targetColor = $(this).data('color')
+    // var targetColor = $('.preview').data('color')
     if(opa_switch == 2){
       $('.colorSample__boxes').css('background-image', 'url(assets/background.png)')
       $('.box').css('background-color', `#${targetColor}`)

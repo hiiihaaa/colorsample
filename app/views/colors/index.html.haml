@@ -5,37 +5,43 @@
     .colorTheme__boxesWrap.colorsRow
       -for num in 1..24 do
         .colorTheme__box{id: "colorThemeBox#{num}", data:{index: num}}
-    .colorTheme__discription.caption
-      ①テーマカラーを選んでください
+    .colorTheme__discription.caption ①テーマカラーを選んでください
   
 
   .colorSample
     .colorSample__boxes
       -for sampleRow in 0..8 do
         .colorsRow{id: "sampleRow#{sampleRow}"}
-          -for num in 1..28  #32から黒側を(4)ズラす
+          -for num in 1..28  #32から黒側を(4)ズラし
             .box{id: "colorSampleBox#{num}", data:{color: 'eeeeee'}, data2:{opacity: 1}}
-    .colorSample__discription.caption
-      ②確認したい色を選んでください
+    .colorSample__discription.caption ②確認したい色を選んでください
 
   .colorPreview
-    .controller__font-style
-      .pcontroller__font-style__japanese
-        .AXIS AXIS
-        .hiragino ヒラギノ角ゴ・明朝
-        .MSP MS Pゴシック・明朝
-        .MB31 見出ゴMB31
-        .MA31 見出ミンMA31
-        .meirio メイリオ
-        .rtyumin リュウミン
-      .controller__font-style__alphanumeric
-        .Arial Arial
-        .GEORGIA GEORGIA
-        .Myriad Myriad
-        .Verdana Verdana
-        .TimesNewRoman TimesNewRoman
+    .controller-font
+      .controller-font__text
+        %span Text:
+        %input{class:'input-text'}
+      .controller-font__style
+        .pcontroller-font__style__japanese
+          .AXIS AXIS
+          .hiragino ヒラギノ角ゴ・明朝
+          .MSP MS Pゴシック・明朝
+          .MB31 見出ゴMB31
+          .MA31 見出ミンMA31
+          .meirio メイリオ
+          .rtyumin リュウミン
+        .controller-font__style__alphanumeric
+          .Arial Arial
+          .GEORGIA GEORGIA
+          .Myriad Myriad
+          .Verdana Verdana
+          .TimesNewRoman TimesNewRoman
 
-    .preview{data:{color: 'eeeeee'}}
+    .previewWrap
+      .preview-text
+      .preview{data:{color: 'eeeeee'}}
+      = image_tag '', {alt: "画像が選択されていません", class: 'background_img'}
+     
 
     .display_and_controller
       .show-value

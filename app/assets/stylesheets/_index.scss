@@ -12,7 +12,7 @@
   }
 
   .header{
-    padding-bottom: 25px;
+    padding-bottom: 22px;
     &__title{
       margin: auto;
       font-size: 45px;
@@ -60,42 +60,80 @@
 
 
   .colorPreview{
-    margin:30px;
+    margin-top:20px;
     display:flex;
     font-size:10px;
-    .controller__font-style{
-      display:flex;
-      &__japanese{
+
+    .controller-font{
+      &__text{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
       }
-      &__alphanumeric{
-        padding-left:10px;
+      &__style{
+        display:flex;
+        width:290px;
+        &__japanese{
+        }
+        &__alphanumeric{
+          padding-left:10px;
+        }
       }
     }
-    .preview{
+    .previewWrap{
+      position: relative;
       margin: auto;
       height: 250px;
       width: 350px;
-      background-color: #eeeeee;
+      .preview-text{
+        height: 250px;
+        width: 350px;
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        z-index:3;
+        &__input{
+          font-size: 50px;
+          text-align: center;
+          line-height: 250px;
+          color: #ffffff;
+        }
+      }
+      .preview{
+        height: 250px;
+        width: 350px;
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        background-color: #eeeeee;
+        z-index:2;
+      }
+      .background_img{
+        height: 250px;
+        width: 350px;
+        z-index:1;
+      }
     }
+
     .display_and_controller{
       display:flex;
       margin-top: 20px;
-      min-width: 300px;
       .col{
         margin-bottom: 5px;
         height: 40px;
-        font-size: 20px;
-        font-family: Arial;
       }
       .show-value{
         margin-right: 10px;
-        width: 200px;
+        width: 140px;
         .col{
+          font-size: 20px;
           display: flex;
+          font-family: Arial;
         }
       }
       .controller__colors{
         .col{
+          font-size: 15px;
           font-family: GEORGIA;
         }
         .controller__colors__image{
@@ -109,7 +147,6 @@
           }
           .vanish{
             display: none
-            // }
           }
         }
       }

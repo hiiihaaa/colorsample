@@ -1,4 +1,3 @@
-
 $(document).on('turbolinks:load', function(){
   $('.colorTheme__box').on('click', function(){
     // クリックした色番号を吐き出す
@@ -96,7 +95,6 @@ $(document).on('turbolinks:load', function(){
           };
         }
         var targetColor = `${colorNo(colorR.toString(16))}${colorNo(colorG.toString(16))}${colorNo(colorB.toString(16))}`
-        $('.colorSample').css('background-image', '')
         $(box).css('opacity', 1)
         $(box).css('background-color', `#${targetColor}`)
         $(box).empty()
@@ -104,5 +102,7 @@ $(document).on('turbolinks:load', function(){
         $(box).attr('data-color', `${targetColor}`)
       })
     }
+    $('.colorSample__boxes').css('background-image', '')
+    document.getElementById('opacity_switch').value = 1
   })
 })

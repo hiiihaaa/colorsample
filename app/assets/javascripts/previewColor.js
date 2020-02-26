@@ -10,6 +10,6 @@ $(document).on('turbolinks:load', function(){
     $(".show-value__hexadecimal--value").append(`<div class='.show-value__hexadecimal__text'>#${targetColor}</div>`)
     $(".show-value__opacity--value").empty()
     $(".show-value__opacity--value").append(`<div class='.show-value__opacity__text'>${targetOpacity}</div>`)
-
+    $('#opacity_switch').attr('data-color', targetColor)
   })
 })
