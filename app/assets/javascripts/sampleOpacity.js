@@ -3,6 +3,8 @@ $(document).on('turbolinks:load', function(){
   $('.colorPreview').on('change', '#opacity_switch', function(){    
     var opa_switch = document.getElementById('opacity_switch').value;
     var targetColor = $(this).data('color')
+    console.log(targetColor)
+    console.log(this)
     // var targetColor = $('.preview').data('color')
     if(opa_switch == 2){
       $('.colorSample__boxes').css('background-image', 'url(assets/background.png)')
