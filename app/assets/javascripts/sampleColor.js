@@ -42,7 +42,7 @@ $(document).on('turbolinks:load', function(){
     var colorshift =4
     var selectC = ($(this).data('index')-1)*4
     for(var i =-4; i<5; i++){
-      var row = document.querySelector(`#sampleRow${i+4}`).children
+      var row = document.querySelector("#sampleRow"+(i+4)).children
       $.each(row,function(index, box){
         if(index <= 16 - colorshift){   //0=>16 マイナス色ズレ(3)
           if(gon.themeColor[cycleNo((selectC+i),minv,maxv)].rgbR == 255){
@@ -96,10 +96,10 @@ $(document).on('turbolinks:load', function(){
         }
         var targetColor = `${colorNo(colorR.toString(16))}${colorNo(colorG.toString(16))}${colorNo(colorB.toString(16))}`
         $(box).css('opacity', 1)
-        $(box).css('background-color', `#${targetColor}`)
+        $(box).css('background-color', "#"+targetColor)
         $(box).empty()
-        $(box).append(`<div class='box__font'>${targetColor}</div>`)
-        $(box).attr('data-color', `${targetColor}`)
+        $(box).append("<div class='box__font'>"+targetColor+"</div>")
+        $(box).attr('data-color', targetColor)
       })
     }
     $('.colorSample__boxes').css('background-image', '')

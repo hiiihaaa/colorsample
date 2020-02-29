@@ -11,8 +11,8 @@ $(document).on('turbolinks:load', function(){
       $('.box').empty()
       for(var i = 0; i <9; i++){
         for(var j=1; j < 29; j++){
-          $(`#sampleRow${i} #colorSampleBox${j}`).css('opacity', `${0.1+0.03*j}`)  //opacityの開始位置を少し調整
-          $(`#sampleRow${i} #colorSampleBox${j}`).attr('data2-opacity', `${0.1+0.03*j}`)
+          $("#sampleRow"+i+" #colorSampleBox"+j).css('opacity', 0.1+0.03*j)  //opacityの開始位置を少し調整
+          $("#sampleRow"+i+" #colorSampleBox"+j).attr('data2-opacity', 0.1+0.03*j)
         }
       }
     }else if(opa_switch ==1){
