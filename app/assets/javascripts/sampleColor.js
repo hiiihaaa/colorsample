@@ -94,7 +94,8 @@ $(document).on('turbolinks:load', function(){
             var colorB = ((index+colorshift)-16)*16*ratioB + gon.themeColor[cycleNo((selectC+i),minv,maxv)].rgbB
           };
         }
-        var targetColor = `${colorNo(colorR.toString(16))}${colorNo(colorG.toString(16))}${colorNo(colorB.toString(16))}`
+        // var targetColor = `${colorNo(colorR.toString(16))}${colorNo(colorG.toString(16))}${colorNo(colorB.toString(16))}`
+        var targetColor = colorNo(colorR.toString(16)).toString(10)+colorNo(colorG.toString(16)).toString(10)+colorNo(colorB.toString(16)).toString(10)
         $(box).css('opacity', 1)
         $(box).css('background-color', "#"+targetColor)
         $(box).empty()

@@ -1,9 +1,7 @@
 $(document).on('turbolinks:load', function(){
-  // $('#opacity_switch').on('change', function(){
   $('.colorPreview').on('change', '#opacity_switch', function(){    
     var opa_switch = document.getElementById('opacity_switch').value;
     var targetColor = $(this).data('color')
-    // var targetColor = $('.preview').data('color')
     if(opa_switch == 2){
       $('.colorSample__boxes').css('background-image', 'url(assets/background.png)')
       $('.box').css('background-color', '#'+targetColor)
@@ -21,7 +19,7 @@ $(document).on('turbolinks:load', function(){
       $('.box').css('background-color', '#'+targetColor)
       $('.box').attr('data-color', targetColor)
       $('.box').empty()
-      $('.box').append(`<div class='box__font'>${targetColor}</div>`)
+      $('.box').append("<div class='box__font'>"+targetColor+"</div>")
     }
   })
 })
