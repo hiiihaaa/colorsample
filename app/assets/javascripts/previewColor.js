@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
     $('.preview').attr('data-color', targetColor)
     $('.preview').css('background-color', '#'+targetColor)
     $('.preview').attr('data2-opacity', targetOpacity)
-    $('.preview').css('opacity', `${targetOpacity}`)
+    $('.preview').css('opacity', targetOpacity)
     $(".show-value__hexadecimal--value").empty()
     $(".show-value__hexadecimal--value").append(`<div class='.show-value__hexadecimal__text'>#${targetColor}</div>`)
     $(".show-value__opacity--value").empty()
