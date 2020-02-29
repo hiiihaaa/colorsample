@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function(){
     }else if(opa_switch ==1){
       $('.colorSample__boxes').css('background-image', '')
       $('.box').css('opacity', '1')
-      $('.box').css('background-color', `#${targetColor}`)
+      $('.box').css('background-color', '#'+targetColor)
       $('.box').attr('data-color', targetColor)
       $('.box').empty()
       $('.box').append(`<div class='box__font'>${targetColor}</div>`)

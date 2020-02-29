@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function(){
     var targetColor = $(this).data('color')
     var targetOpacity = document.getElementById(this.id).style.opacity
     $('.preview').attr('data-color', targetColor)
-    $('.preview').css('background-color', `#${targetColor}`)
+    $('.preview').css('background-color', '#'+targetColor)
     $('.preview').attr('data2-opacity', targetOpacity)
     $('.preview').css('opacity', `${targetOpacity}`)
     $(".show-value__hexadecimal--value").empty()
