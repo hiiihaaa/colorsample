@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function(){
     // var targetColor = $('.preview').data('color')
     if(opa_switch == 2){
       $('.colorSample__boxes').css('background-image', 'url(assets/background.png)')
-      $('.box').css('background-color', `#${targetColor}`)
+      $('.box').css('background-color', '#'+targetColor)
       $('.box').attr('data-color', targetColor)
       $('.box').empty()
       for(var i = 0; i <9; i++){
