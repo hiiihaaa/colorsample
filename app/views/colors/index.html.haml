@@ -13,7 +13,7 @@
       -for sampleRow in 0..8 do
         .colorsRow{id: "sampleRow#{sampleRow}"}
           -for num in 1..28  #32から黒側を(4)ズラし
-            .box{id: "colorSampleBox#{num}", data:{color: 'eeeeee'}, data2:{opacity: 1}}
+            .box{id: "colorSampleBox#{sampleRow}#{num}", data:{color: 'eeeeee'}, data2:{opacity: 1}}
     .colorSample__discription.caption ②確認したい色を選んでください
 
   .colorPreview
@@ -39,14 +39,12 @@
 
     .previewWrap
       .preview-text
-      .preview{data:{color: 'eeeeee'}}
+      .preview{id: 'preview', data:{color: 'eeeeee'}}
       = image_tag '', {alt: "画像が選択されていません", class: 'background_img'}
      
 
     .display_and_controller
       .show-value
-        -# .show-value__rgb.col
-        -#   -# rgb
         .show-value__hexadecimal.col
           %span.show-value__hexadecimal--caption color: 
           .show-value__hexadecimal--value #eeeeee
@@ -59,11 +57,11 @@
 
       .controller__colors
         .controller__colors__contrast.col
-          %span mode
-          = select_tag 'mode', options_for_select({"Monotone": 1, "Twotone": 2}, 1)
+          -# %span mode
+          -# = select_tag 'mode', options_for_select({"Monotone": 1, "Twotone": 2}, 1)
         .controller__colors__target.col
           %span target
-          = select_tag 'color-garget', options_for_select({"Background": 1, "Font": 2}, 1)
+          = select_tag 'color-target', options_for_select({"Background": 1, "Font": 2}, 1)
         .controller__colors__opacity.col
           %span opacity
           = select_tag 'opacity', options_for_select({"OFF": 1, "ON": 2}), id: 'opacity_switch'
