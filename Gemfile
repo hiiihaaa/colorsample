@@ -67,6 +67,7 @@ gem 'erb2haml'
 gem 'pry-rails'
 gem 'jquery-rails'
 gem 'gon'
+gem 'webpacker', github: 'rails/webpacker'
 
 
 group :production do

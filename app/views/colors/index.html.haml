@@ -3,32 +3,27 @@
     .header__title Color Sample
   .colorTheme
     .colorTheme__boxesWrap.colorsRow
-      -for num in 1..24 do
-        .colorTheme__box{id: "colorThemeBox#{num}", data:{index: num}}
+      .colorTheme__box{"v-for":"(styleObject, index) in styleObjects", ":style":"styleObject", "v-on:click":"sampleColor(index)"}
     .colorTheme__discription.caption ①テーマカラーを選んでください
   
-
   .colorSample
-    .colorSample__boxes
-      -for sampleRow in 0..8 do
-        .colorsRow{id: "sampleRow#{sampleRow}"}
-          -for num in 1..28  #32から黒側を(4)ズラし
-            .box{id: "colorSampleBox#{sampleRow}#{num}", data:{color: 'eeeeee'}, data2:{opacity: 1}}
+    .colorSample__boxes{":style":"backImage"}
+      .colorsRow{"v-for":"(styleObject2, index) in styleObjects2"}
+        .box{"v-for":"(styleObject2_2, index) in styleObject2.styleObjects2_2", ":style":"styleObject2_2", "v-on:click":"preview(styleObject2_2)"}
+          .box__font {{styleObject2_2.rgb}}
+
     .colorSample__discription.caption ②確認したい色を選んでください
 
   .colorPreview
     .controller-font
       .controller-font__text
         %span Text:
-        %input{class:'input-text'}
+        %input{v:{model: "inputText"}}
+      .controller-font__size
+        %span font-size:
+        %input{v:{model: "inputFontSize"}, "@change":"fontsize"}
+        px
       .controller-font__style
-        -# .pcontroller-font__style__japanese
-        -#   .AXIS AXIS
-        -#   .hiragino ヒラギノ角ゴ・明朝
-        -#   .meirio メイリオ
-        -#   .MB31 見出ゴMB31
-        -#   .MA31 見出ミンMA31
-        -#   .rtyumin リュウミン
         .controller-font__style__alphanumeric
           .Arial Arial
           .GEORGIA GEORGIA
@@ -37,20 +32,28 @@
           .TimesNewRoman TimesNewRoman
 
     .previewWrap
-      .preview-text
-      .preview{id: 'preview', data:{color: 'eeeeee'}}
-      = image_tag '', {alt: "画像が選択されていません", class: 'background_img'}
+      .preview{id: 'preview', ":style":"styleObject3"}  {{inputText}}
+      .background_img{":style":"styleObject4"}
      
-
     .display_and_controller
       .show-value
-        .show-value__hexadecimal.col
-          %span.show-value__hexadecimal--caption color: 
-          .show-value__hexadecimal--value #eeeeee
-          
-        .show-value__opacity.col
-          %span.show-value__opacity--caption opacity:
-          .show-value__opacity--value 1
+        .show-value__background{":style":"styleObject5", "@click":"target(styleObject5.fontSwitch)"}
+          background
+          .show-value__hexadecimal.col
+            %span.show-value__hexadecimal--caption color: 
+            .show-value__hexadecimal--value {{styleObject3.backRgb}}
+          .show-value__opacity.col
+            %span.show-value__opacity--caption opacity:
+            .show-value__opacity--value {{styleObject3.bOpa}}
+        .show-value__background{":style":"styleObject6", "@click":"target(styleObject6.fontSwitch)"}
+          font
+          .show-value__hexadecimal.col
+            %span.show-value__hexadecimal--caption font: 
+            .show-value__hexadecimal--value # {{styleObject3.fontRgb}}
+          .show-value__opacity.col
+            %span.show-value__opacity--caption opacity:
+            .show-value__opacity--value {{styleObject3.fOpa}}
+  
           
         .show-value__fontstyle
 
@@ -58,14 +61,11 @@
         .controller__colors__contrast.col
           -# %span mode
           -# = select_tag 'mode', options_for_select({"Monotone": 1, "Twotone": 2}, 1)
-        .controller__colors__target.col
-          %span target
-          = select_tag 'color-target', options_for_select({"Background": 1, "Font": 2}, 1)
         .controller__colors__opacity.col
           %span opacity
-          = select_tag 'opacity', options_for_select({"OFF": 1, "ON": 2}), id: 'opacity_switch'
+          = select_tag 'opacity', options_for_select({"OFF": 1, "ON": 2}), {"v-model":"opacitySwitch", "@change":"opacityMode(opacitySwitch)"}
         .controller__colors__image.col
           %span image
           %label{for: 'input_image'}
             select file
-            %input.vanish{type: 'file', id: 'input_image'}
+            %input.vanish{type: 'file', id: 'input_image', "@change":"insertImage"}
