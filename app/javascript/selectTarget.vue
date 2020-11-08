@@ -27,7 +27,14 @@
     </div>
 
     <div class="controller__colors">
-      <div class="controller__colors__contrast col"></div>
+      <div class="controller__colors__opacity col">
+        <span>opacity: </span>
+        <select @change="OpaSwitch" :value="selected">
+          <option v-for="option in options" :value="option.value">
+            {{option.text}}
+          </option>
+        </select>
+      </div>
 
       <div class="controller__colors__image col">
         <span>image</span>
@@ -46,19 +53,15 @@ export default {
   data:function(){
     const styleObject5={border:"solid 1pt", borderColor: "#d0ff40", fontSwitch:1}
     const styleObject6={border:"solid 1pt", borderColor: "#ffffff", fontSwitch:2}
-    return {styleObject5, styleObject6}
+    const options=[{text: "off", value: 1}, {text: "on", value: 2}]
+    let selected=1
+    return {styleObject5, styleObject6,options,selected}
     
   },
   computed:{
-    backImage(){
-      return this.$store.getters.getImage
-    },
-    styleObject3(){
-      return this.$store.getters.getStyleObject3
-    },
-    styleObject4(){
-      return this.$store.getters.getStyleObject4
-    }
+    backImage(){ return this.$store.getters.getImage },
+    styleObject3(){ return this.$store.getters.getStyleObject3 },
+    styleObject4(){ return this.$store.getters.getStyleObject4 }
   },
   methods:{
     target(fontSwitch){
@@ -71,6 +74,11 @@ export default {
         this.styleObject6.borderColor="#d0ff40"
       }
     },
+    OpaSwitch(e){
+      this.$store.dispatch('updateOpacitySwitch', e.target.value)
+      this.selected = e.target.value
+      this.$emit('emitOpaSwitch', this.selected )
+    },
     async insertImage(e) {
       const files = e.target.files || e.dataTransfer.files
       const file = files[0]
@@ -78,11 +86,10 @@ export default {
         const picture = await this.getBase64(file)
         if(this.styleObject3.fontSwitch==1){
           const rgb=this.styleObject3.bArrRgb
-          this.opacitySwitch=2
+          this.$store.dispatch('updateOpacitySwitch', 2)
           this.$emit('emitOpacityMode',2)
           this.styleObject3.backgroundColor="rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+","+"0)"
           this.styleObject4.backgroundImage="url("+picture+")"
-          return this.styleObject3, this.styleObject4
         }else if(this.styleObject3.fontSwitch==2){
           const rgb=this.styleObject3.fArrRgb
           this.opacitySwitch=2
@@ -91,8 +98,6 @@ export default {
           this.styleObject3.WebkitBackgroundClip="text"
           this.styleObject3.color="rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+","+"0)"
           this.styleObject3.backgroundImage="url("+picture+")"
-
-          return this.styleObject3
         }
       }
     },

@@ -26,36 +26,15 @@
         </div>
       </div>
 
-      <div class="colorSample__discription.caption">
+      <div class="colorSample__discription caption">
         ②確認したい色を選んでください
       </div>
     </div>
 
     <div class="colorPreview">
-      <div class="controller-font">
-        <div class="controller-font__text">
-          <span>Text:</span>
-          <input ref="inputText" :value="inputText" @input="updateText">
-        </div>
-        <div class="controller-font__size">
-          <span>font-size:</span>
-          <input v-model= "inputFontSize" @change="fontsize">
-          px
-        </div>
-        <div class="controller-font__style">
-          <div class="controller-font__style__alphanumeric">
-            <div class="Arial Arial"></div>
-            <div class="GEORGIA GEORGIA"></div>
-            <div class="Myriad Myriad"></div>
-            <div class="Verdana Verdana"></div>
-            <div class="TimesNewRoman TimesNewRoman"></div>
-          </div>
-        </div>
-      </div>
-
+      <inputArea></inputArea>
       <preview ref="preview"></preview>
-      <selectTarget @emitOpacityMode="opacityMode"></selectTarget>
-
+      <selectTarget @emitOpacityMode="opacityMode" @emitOpaSwitch="opacityMode"></selectTarget>
     </div>
   </div>
 </template>
@@ -63,10 +42,12 @@
 
 
 <script>
+import inputArea from './inputArea.vue'
 import preview from './preview.vue'
 import selectTarget from './selectTarget.vue'
+
 export default {
-  components: {preview, selectTarget},
+  components: { inputArea, preview, selectTarget },
   data: function(){
     let styleObjects=[]
     let styleObjects2=[]
@@ -86,7 +67,6 @@ export default {
     } 
     return {
       styleObjects, styleObjects2,
-      inputFontSize: "300"
     }
   },
 
@@ -94,10 +74,10 @@ export default {
     inputText(){ return this.$store.getters.getText },
     backImage(){ return this.$store.getters.getImage },
     opacitySwitch(){ return this.$store.getters.getOpacitySwitch },
-    styleObject3(){ return this.$store.getters.getStyleObject3 }
+    styleObject3(){ return this.$store.getters.getStyleObject3 },
+    styleObject4(){ return this.$store.getters.getStyleObject4 }
   },
 
-  //--------------------------------------------
   methods: {
     colorOrder(No){
       let rgb=[]
@@ -181,20 +161,13 @@ export default {
     preview(styleObject2){
       this.$refs.preview.childPreview(styleObject2, this.opacitySwitch)
     },
-    fontsize(){
-      this.styleObject3.fontSize=this.inputFontSize+"px"
-      return this.styleObject3
-    },
-    updateText(e){   ///----------------------------------------------------------------------------------------
-      this.$store.dispatch('updateText', e.target.value)
-    },
     opacityMode(opacitySwitch){
       if(opacitySwitch==2){
         for(let Row=0; Row <=8; Row++){
           for(let Col=0; Col <=28; Col++){
-            this.styleObjects2[Row].styleObjects2_2[Col].backgroundColor=this.$refs.preview.styleObject3.backgroundColor.replace("rgba", "rgb").replace(",1)", ")")
-            this.styleObjects2[Row].styleObjects2_2[Col].arrRgb=this.$refs.preview.styleObject3.bArrRgb
-            this.styleObjects2[Row].styleObjects2_2[Col].rgb=this.$refs.preview.styleObject3.rgb
+            this.styleObjects2[Row].styleObjects2_2[Col].backgroundColor=this.styleObject3.backgroundColor.replace("rgba", "rgb").replace(",1)", ")")
+            this.styleObjects2[Row].styleObjects2_2[Col].arrRgb=this.styleObject3.bArrRgb
+            this.styleObjects2[Row].styleObjects2_2[Col].rgb=this.styleObject3.rgb
             this.styleObjects2[Row].styleObjects2_2[Col].opacity=0.03*(Col+5)
             this.backImage.backgroundImage="url(assets/background.png)"
           }
@@ -213,7 +186,7 @@ export default {
           }
         }
       }
-      return this.styleObjects2_2, this.styleObject3
+      return this.styleObjects2_2
     }
   }
 }

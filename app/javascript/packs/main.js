@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Index from '../index.vue'
+import Main from '../main.vue'
 import store from '../store.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -7,6 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el,
     store,
-    render: h => h(Index)
+    render: h => h(Main)
   })
 })
