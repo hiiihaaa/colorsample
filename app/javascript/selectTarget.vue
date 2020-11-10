@@ -129,3 +129,38 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.display_and_controller{
+  display:flex;
+  margin-top: 20px;
+}
+.display_and_controller.col{
+  margin-bottom: 5px;
+  height: 40px;
+}
+.display_and_controller .show-value{
+  margin-right: 10px;
+  width: 140px;
+}
+.display_and_controller .show-value .col{
+  font-size: 20px;
+  display: flex;
+  font-family: Arial;
+}
+
+.display_and_controller .controller__colors .col{
+  font-size: 15px;
+  font-family: GEORGIA;
+}
+.display_and_controller .controller__colors .controller__colors__image label{
+  height: 50px;
+  width: 50px;
+  background-color: #f8f8f8;
+  border: solid 1px #999999;
+  border-radius: 4px;
+}
+.display_and_controller .controller__colors .controller__colors__image .vanish{
+  display: none
+}
+</style>

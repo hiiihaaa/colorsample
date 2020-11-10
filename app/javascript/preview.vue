@@ -1,6 +1,6 @@
 <template>
   <div class="previewWrap">
-    <div class="preview" id="preview" :style="styleObject3">{{inputText}}</div>
+    <p class="preview" id="preview" :style="styleObject3">{{inputText}}</p>
     <div class="background_img" :style="styleObject4"></div>
   </div>
 </template>
@@ -40,3 +40,31 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.previewWrap{
+  position: relative;
+  margin: auto;
+  height: 250px;
+  width: 350px;
+  display: table;
+}
+.previewWrap .preview {
+  position:absolute;
+  display: table-cell;
+  vertical-align: middle;
+  z-index:2;
+  height: 250px;
+  width: 350px;
+  text-align: center;
+  /* word-break: normal; */
+  background-size:"cover";
+
+}
+.previewWrap .background_img{
+  height: 250px;
+  width: 350px;
+  z-index:1;
+}
+
+</style>
