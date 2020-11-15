@@ -58,8 +58,6 @@ export default {
   width: 350px;
   text-align: center;
   /* word-break: normal; */
-  background-size:"cover";
-
 }
 .previewWrap .background_img{
   height: 250px;

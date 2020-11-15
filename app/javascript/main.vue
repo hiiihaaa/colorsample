@@ -55,7 +55,7 @@ export default {
 
     // themeColor
     for(let No=1; No <=colorDiv; No++){
-      let themeColor=this.colorOrder(No)
+      let themeColor=this.colorOrder(No*2)
       styleObjects.push({backgroundColor: "rgb("+themeColor[0]+","+themeColor[1]+","+themeColor[2]+")"})
     }
     // sampleColor
@@ -81,9 +81,9 @@ export default {
   methods: {
     colorOrder(No){
       let rgb=[]
-      const colorDiv = 24             // themaColorのグラデーション
-      const colorDivS  = colorDiv/6   // 3原色用に分割
-      const colorbase = 256/4         // 色の変化幅  (1to256でナンバリング）
+      const colorDiv = 48             // themaColorのグラデーション  8*6=48
+      const colorDivS = colorDiv/6    // 3原色用に分割
+      const colorbase = 256/8         // 色の変化幅  (1to256でナンバリング）
       if(No<=colorDivS){
         rgb.push(255)
         rgb.push(colorbase*No)
@@ -116,7 +116,7 @@ export default {
         for(let No=0; No <=29*9-1; No++){
           const Row= Math.floor((No)/29) 
           const Col=No%29
-          const colorBase = this.colorOrder(Math.floor((index+Row+1)%24))
+          const colorBase = this.colorOrder(Math.floor((index*2+Row+46)%48))
           const diffLRgb=colorBase.map(function(f){return Math.round(f/16)})        // 基準点から下16分割末端切り捨て
           const diffHRgb=colorBase.map(function(f){return Math.round((255-f)/16)})  // 基準点から上16分割末端切り捨て
           let rgb=[]

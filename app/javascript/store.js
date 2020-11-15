@@ -6,7 +6,7 @@ export default new Vuex.Store({
   state: {
     inputText: ' ',
     backImage:{backgroundImage:""},
-    styleObject3: {backgroundColor:"rgba(238,238,238,1)",bArrRgb:[238,238,238],bOpa:1,color:"rgba(255,255,255,1)",fArrRgb:[238,238,238],fOpa:1,backgroundImage:"",backRgb:"eeeeee",fontRgb:"ffffff",backgroundClip: "",WebkitBackgroundClip: "",fontSwitch:1,fontWeight:"bold",fontSize:"100px", lineHeight:"100px"},
+    styleObject3: {backgroundColor:"rgba(238,238,238,1)",bArrRgb:[238,238,238],bOpa:1,color:"rgba(255,255,255,1)",fArrRgb:[238,238,238],fOpa:1,backgroundImage:"",backRgb:"eeeeee",fontRgb:"ffffff",backgroundClip: "",WebkitBackgroundClip: "",fontSwitch:1,fontWeight:"bold",fontSize:"100px", lineHeight:"100px",backgroundSize:"cover"},
     styleObject4: {backgroundColor:"rgba(255,255,255,1)",color:"rgba(255,255,255,1)",backgroundImage:"",backgroundSize:"cover"},
     opacitySwitch: 1,
     inputFontSize: "100"
